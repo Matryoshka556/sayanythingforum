@@ -1,61 +1,134 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>index</title>
-    <link href="C:\Users\spart\OneDrive\Desktop\say_anything_forum\css\index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-
-    <div id="video container">
-        <div id="video">
-            <video width="1920" height="1080" oncontextmenu="return false;" alt="Protected Image" autoplay muted loop>
-                <source src="C:\Users\spart\OneDrive\Desktop\say_anything_forum\attrib\comp1.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-    <div id="htext" class="hbox">
-            <h1>All text responses in this forum will be collected, printed, and molded into a public art piece to be installed on campus.</h1> <br>
-    </div>
-
-    <div id="text">
-
-            <div class="box">
-                <p>All responses are anonymous; however, you may leave your name if you'd like</p><br>
-                <br>
+    <div id="nav-container">
+        <div id="nav">
+            <div id="nav-left">
+                <a href="index.html"><sub>Home</sub></a>
             </div>
-            <div class="box">
-            <p>You may respond with any text, in any language, as many times as you want.</p><br>
-          </div>
-                <div class="box">
-                    <p>Text will be printed verbatim with no alterations.<br>
-                </div>
-                <div class="box">
-                    <p>Hate speech will not be included in the piece; however, profanity is accepted.</p>
-                    <br><br>
-                
-                </div>
-                <div id="box">
-                    <p> Intellectual Property Agreement:<br>By responding to this form, I agree to that my response may be incorporated verbatim into a public art piece.
-                    </p>
-                </div>
+            <div id="nav-right">
+                <a href="archive.html"><sub>Archive</sub></a>
+            </div>
         </div>
-    <div id="responses">
-  <form method="post" action="https://script.google.com/macros/s/AKfycbyfwFlhjYCTnL_eh8h3FYe3Q_MYuSxZQPOMBa3NyBNtipOpcaPzuTPJFyWGeY7OU3RE/exec">
-    <label>text submission</label>
-    <input type="text" name="textsubmission">
+    </div>
 
-    <label>optional: leave your name</label>
-    <input type="text" name="name">
+    <div class="ticker-container">
 
-    <input type="submit" value="Submit">
-  </form>
-</div>
+        <!-- 4 rows above -->
+        <div class="ticker-row" id="row1"></div>
+        <div class="ticker-row" id="row2"></div>
+        <div class="ticker-row" id="row3"></div>
+        <div class="ticker-row" id="row4"></div>
+        <div class="ticker-row" id="row5"></div>
+        <div class="ticker-row" id="row6"></div>
+        <div class="ticker-row" id="row7"></div>
+        <div class="ticker-row" id="row8"></div>
+        <!-- Center row with H1 -->
+        <div class="ticker-row center-row">
+            Say Anything&nbsp <br><sub>Anonymous Open Forum</sub>
+        </div>
+
+        <!-- 4 rows below -->
+        <div class="ticker-row" id="row9"></div>
+        <div class="ticker-row" id="row10"></div>
+        <div class="ticker-row" id="row11"></div>
+        <div class="ticker-row" id="row12"></div>
+        <div class="ticker-row" id="row13"></div>
+        <div class="ticker-row" id="row14"></div>
+        <div class="ticker-row" id="row15"></div>
+        <div class="ticker-row" id="row16">
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+
+    <div id="main">
+        <div id="htext">
+            <sub2>All text responses in this forum will be collected, printed, and molded into a public art piece to be
+                installed on campus. In the meantime, this site will update and display responses, artwork (email:
+                artist@example.com), and archived zines.</sub2> <br>
+        </div>
+        <div id="weeklyimagecontainer">
+    
+        <div id="weeklyimage">
+            <div></div>
+                <img src="unsplash_test.jpg" width="100%" height="auto" title="weekly image"></img>
+            </div>
+            <div id="weeklyimagecaption">
+                <sub>weekly image caption</sub>
+            </div>
+        </div>
+    
+        <div id="instructions">
+            <div>
+                <p>All responses are anonymous; however, you may leave your name if you'd like.</sub><br>
+                    <br>
+            </div>
+            <div>
+                <p>You may respond with any text, in any language, as many times as you want.</sub><br>
+            </div>
+            <div>
+                <p>Text will be printed verbatim with no alterations.<br><br>
+            </div>
+            <div>
+                <p>Hate speech will not be included in the piece; however, profanity is accepted.</sub>
+                    <br><br>
+            </div>
+        </div>
+        <div id="agreement">
+            <sub2> Intellectual Property Agreement:</sub2><br>
+            <p>By responding to this form, I agree to that my response may be incorporated verbatim into a public art
+                piece.</sub>
+        </div>
+    
+
+
+
+    <div id="response">
+        <div>
+            <form method="post"
+                action="https://script.google.com/macros/s/AKfycbyfwFlhjYCTnL_eh8h3FYe3Q_MYuSxZQPOMBa3NyBNtipOpcaPzuTPJFyWGeY7OU3RE/exec">
+                <label><sub>text submission</sub></label><br>
+                <textarea name="textsubmission"
+                    oninput="this.style.height='';this.style.height=this.scrollHeight + 'px'"
+                    placeholder="respond here"></textarea>
+        </div>
+        <br><br>
+        <div>
+            <label><sub>optional: leave your name</sub></label>
+            <textarea name="name" oninput="this.style.height='';this.style.height=this.scrollHeight + 'px'"></textarea>
+        </div>
+        <div id="checker">
+            <label><sub>Include your response in graphic elements and/or zines?</sub></label>
+            <input type="radio" name="include" value="yes">
+            <label>Yes</label>
+            <input type="radio" name="include" value="no">
+            <label>No</label>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
     </form>
-   </div>
+
+
 </body>
+
 </html>

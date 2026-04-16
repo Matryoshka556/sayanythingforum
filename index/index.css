@@ -1,0 +1,310 @@
+@charset "utf-8";
+/* CSS Document */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*END MEYER REST*/
+html {
+  font-size: 1rem; /* base size */
+  display: flex;
+}
+body {
+  margin: 0;
+  background: white;
+  color:black;
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  overflow-x: hidden;
+  height: 100vh;
+}
+#nav-container {
+  position:absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2rem;
+  width: 80%;
+  max-width: 1200px;
+  background: white opacity(0.9);
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* ensure it stays on top */
+}
+#nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#nav-left,
+#nav-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#nav-container a {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.ticker-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* full viewport height */
+  padding-top: 5rem; /* space for nav */
+}
+
+/* Flex rows: each takes equal space */
+.ticker-row {
+  flex: 1; /* each row takes equal portion of container */
+  display: flex; /* so ticker-track can align properly */
+  align-items: center; /* vertical center inside row */
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0  10px;
+  font-size: 2.5vh; /* responsive font size based on viewport width */
+}
+
+/* Center row H1 */
+.center-row {
+  flex: 2; /* make H1 row slightly larger */
+  justify-content: center; /* horizontal center */
+  font-size: 2.5rem; /* responsive heading size */
+  font-weight: 500;
+}
+
+/* Ticker track inside each row */
+.ticker-track {
+  display: inline-block;
+  padding-left: 100%;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Leftward scrolling (default) */
+@keyframes scrollText {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Rightward scrolling (reverse) */
+@keyframes scrollTextReverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+#main{
+	width: 80%vw;
+	height: auto;
+	max-width: inherit;
+	display: flex 1;
+  flex-wrap: wrap;
+  align-items: center;
+	padding: .5rem;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+#htext{
+  border-top: .05rem solid black;
+   border-bottom: .05rem solid black;
+	width: auto;
+	height: max-content;
+	max-width: inherit;
+	padding: .5rem;
+	flex-direction: column;
+	display: flex;
+  
+}
+#weeklyimagecontainer{
+  width: auto;
+  height: max-content;
+  max-width: inherit;
+  padding: .5rem;
+  flex-direction: row;
+  display: flex;
+  
+  justify-content: space-between;
+}
+#weeklyimage{
+  width: 50%;
+  height: 50%;
+  max-width: inherit;
+  padding: .5rem;
+  flex-direction: row;
+  display: flex;
+  
+  justify-content: right;
+  align-content: flex-start;
+}
+#weeklyimagecaption{
+    width: 50%;
+    height: auto;
+    max-width: inherit;
+    padding: .5rem;
+    display: flex;
+
+    text-orientation: sideways-right;
+    align-items: flex-end;
+}
+#instructions{
+width: auto;
+height: max-content;
+max-width: inherit;
+padding: .5rem;
+flex-direction: row;
+display: flex;
+justify-content: space-evenly;
+gap: 2rem;
+
+
+}
+#instructions div{
+  display:flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: .5rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.15)
+}
+#agreement{
+  width: 100%;
+  height: max-content;
+  max-width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  flex-direction: column;
+  display: flex 1;
+
+
+}
+#response{
+	width: 100%;
+	height: max-content;
+	display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.4;
+}
+#checker{
+  padding-top: 1rem;
+
+}
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+input[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 2%;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+}
+textarea {
+  width: 100%;
+  min-height: 40px;
+  overflow: hidden;
+  resize: none;
+}
+
+
+p{
+	font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
+	font-size: .75rem;
+	font-weight: 400;
+	color: black;
+  line-height: 1.4;
+}
+sub{
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: black;
+}
+sub2{
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+  line-height: 1.4;
+}
+h1{
+font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+font-size:vh(10) 30pt;
+font-weight: 400;
+color: black;}	
+h2{
+font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+font-size: 2rem;
+font-weight: 350;
+color: black;}	
+
+space grotesk{
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1.75rem;
+  font-weight: 400;
+	font-style: normal;}
+  

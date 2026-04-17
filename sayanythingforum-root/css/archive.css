@@ -1,0 +1,311 @@
+/* ARCHIVE */
+@charset "utf-8";
+/* CSS Document */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*END MEYER REST*/
+body {
+  margin: 0;
+  background: white;
+  color:black;
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  overflow-x: hidden;
+  height: 100vh;
+  line-height: normal;
+}
+#nav-container {
+  position:absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2rem;
+  width: 90vw;
+  max-width: 1200px;
+  background: white opacity(0.9);
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* ensure it stays on top */
+}
+#nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#nav-left,
+#nav-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#nav-container a {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+}
+#lookup-header {
+  width: 80%;
+  text-align: left;
+  margin-bottom: 0.8rem;
+
+}
+/* ================= ISO LOOKUP ================= */
+#lookup-container {
+  width: 90%;
+  margin: 6rem auto 1rem auto;
+  border-bottom: 1px solid black;
+  padding-bottom: 1rem;
+}
+
+#lookup-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+#iso-lookup {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+  outline: none;
+}
+
+#lookup-result {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+.timestamp.highlight {
+  border: 1px solid black;
+  outline: 1px solid black;
+}
+
+#lookup-dropdown {
+  width: 100%;
+  border: 1px solid black;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+}
+
+.dropdown-item {
+  padding: 0.4rem;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-item:hover {
+  background: black;
+  color: white;
+}
+
+/* ================= BASE (your existing reset stays above) ================= */
+
+#archive {
+  width: 90%;
+  margin-top: 5rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* ================= ARCHIVE HEADER ================= */
+#archive-header {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.archive-year {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+}
+/* ================= MONTH GRID ROW ================= */
+
+.month-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid black;
+}
+
+.month {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.month-label {
+  border-bottom: 1px solid black;
+  padding-bottom: 0.25rem;
+}
+
+/* ================= EXPANDING CONTENT ================= */
+
+.row-content {
+  grid-column: span 3;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.125s linear;
+}
+
+.month-row.active .row-content {
+  max-height: 2000px;
+}
+
+/* ================= 6 COLUMN TIMESTAMP GRID ================= */
+
+.timestamp-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  width: 100%;
+}
+
+/* base timestamp cell */
+.timestamp {
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  cursor: pointer;
+  min-width: 0;
+}
+
+/* timestamp time label */
+.time {
+  font-size: 0.8rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* hidden entry */
+.entry {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.125s linear;
+  font-size: 0.9rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ================= EXPANDED STATE ================= */
+
+.timestamp.active {
+  grid-column: span 2;
+  border: 1px solid black;
+}
+
+.timestamp.active .entry {
+  max-height: 1000px;
+  padding-bottom: 0.1rem;
+}
+
+p{
+	font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
+	font-size: .75rem;
+	font-weight: 400;
+	color: black;
+  line-height: 1.4;
+}
+sub{
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: black;
+}
+sub2{
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+  line-height: 1.4;
+}
+#footer{
+  display: flex;
+  height: auto;
+  width: 100%;
+  align-items: center;
+  background: white opacity(0.9); 
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: .5rem;
+  font-weight: 300;
+  color: rgb(125, 125, 125);
+  text-align: center;
+  padding: 1rem;
+}
+h1{
+font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+font-size:vh(10) 30pt;
+font-weight: 400;
+color: black;}	
+h2{
+font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+font-size: 2rem;
+font-weight: 350;
+color: black;}	
+
+space grotesk{
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1.75rem;
+  font-weight: 400;
+	font-style: normal;}

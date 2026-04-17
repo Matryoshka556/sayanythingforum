@@ -1,0 +1,119 @@
+<doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="nav-container">
+        <div id="nav">
+            <div id="nav-left">
+                <a href="index.html"><sub>Home</sub></a>
+            </div>
+            <div id="nav-right">
+                <a href="archive.html"><sub>Archive</sub></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticker-container">
+
+        <!-- 4 rows above -->
+        <div class="ticker-row" id="row1"></div>
+        <div class="ticker-row" id="row2"></div>
+        <div class="ticker-row" id="row3"></div>
+        <div class="ticker-row" id="row4"></div>
+        <div class="ticker-row" id="row5"></div>
+        <div class="ticker-row" id="row6"></div>
+        <div class="ticker-row" id="row7"></div>
+        <div class="ticker-row" id="row8"></div>
+        <!-- Center row with H1 -->
+        <div class="ticker-row center-row">
+            Say Anything&nbsp <br><sub>Anonymous Open Forum</sub>
+        </div>
+
+        <!-- 4 rows below -->
+        <div class="ticker-row" id="row9"></div>
+        <div class="ticker-row" id="row10"></div>
+        <div class="ticker-row" id="row11"></div>
+        <div class="ticker-row" id="row12"></div>
+        <div class="ticker-row" id="row13"></div>
+        <div class="ticker-row" id="row14"></div>
+        <div class="ticker-row" id="row15"></div>
+        <div class="ticker-row" id="row16">
+
+        </div>
+    </div>
+   
+
+
+    <div id="main">
+        
+    
+        <div id="instructions">
+            <div id="topbox">
+                <div id="topbox-text">
+                    <sub2>Enter your text in the field at the bottom of the page to respond to this forum. All text recorded will be sorted by date and displayed in the "Archive" section. You may respond with any text, in any language, as many times as you want. Archive page will be updated daily.</sub2>
+                </div>
+            </div>
+        <div id="middleboxes">
+            <div>
+                <p> All responses are anonymous though names may included in text response. *NOTE* <i>All responses previous to the publishing of this cite will no longer contain an associated name </i></p>
+            </div>
+            <div>
+                <p>Text will be collected verbatim with no alterations excluding non standard special characters (custom emojis or glyphs). </p><br>
+            </div>
+            <div id="box4">
+                <p>Hate speech will not be included in the piece; however, profanity is accepted. Hate Speech will be interpreted by archiver, however, minimal censorship is a primary goal. See "PLACEHOLDER" for more sepecifics.</p></sub>
+            </div>
+        </div>
+        </div>
+        <div id="agreement"> 
+            <div>
+                <p><sub2> Intellectual Property Agreement:</sub2> <br>
+                By responding to this form, I agree to that my response may be incorporated verbatim into the archive of "Say Anything Forum" and be used for any non-commercial purposes, including but not limited to digital and physical media, associated with "Say Anything Forum".
+                I relinquish the right to modify or remove my response after it is submitted and any claim for its usage unless changed from verbatim (excluding special characters and/or word specifc clerical errors). </p>
+            </div>
+        </div>
+    
+
+
+
+   <div id="response">
+
+  <form id="response-form"
+        action="https://script.google.com/macros/s/AKfycbyfwFlhjYCTnL_eh8h3FYe3Q_MYuSxZQPOMBa3NyBNtipOpcaPzuTPJFyWGeY7OU3RE/exec"
+        method="post">
+
+    <div id="response-textbox">
+      <label><sub>text submission</sub></label><br>
+      <textarea name="textsubmission"
+        oninput="this.style.height='';this.style.height=this.scrollHeight + 'px'"
+        maxlength="1400"></textarea>
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  <div id="status-message"></div>
+</div>
+
+    
+    </div>
+<div id="footer">
+  > &copy; 2024 Say Anything Forum. All rights reserved.
+</div>
+
+ <script src="js/index.js"></script>
+
+</body>
+
+</html>

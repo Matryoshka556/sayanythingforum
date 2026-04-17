@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/\s+/g, ' ')
       .trim()
       .split(' ')
-      .filter(Boolean)
       .slice(0, 10)
       .join(' ');
   }
@@ -28,9 +27,32 @@ document.addEventListener('DOMContentLoaded', () => {
     return (v || '').toLowerCase();
   }
 
+  // ======================================================
+  // 🔑 SPACE NORMALIZATION SYSTEM (CORE FIX)
+  // ======================================================
+
+  function toSpaceFormat(value) {
+    if (!value) return '';
+
+    const digits = value.replace(/\D/g, '');
+
+    const parts = [
+      digits.slice(0, 4),
+      digits.slice(4, 6),
+      digits.slice(6, 8),
+      digits.slice(8, 10),
+      digits.slice(10, 12),
+      digits.slice(12, 14)
+    ].filter(Boolean);
+
+    return parts.join(' ');
+  }
+
   // ================= PLACEHOLDER =================
 
   if (lookupInput) {
+    lookupInput.placeholder = 'YYYY MM DD HH mm ss';
+
     const originalPlaceholder = lookupInput.placeholder;
 
     lookupInput.addEventListener('focus', () => {
@@ -69,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lookupInput) {
     lookupInput.addEventListener('input', (e) => {
-      const raw = e.target.value || '';
-      const query = raw.trim();
 
-      updateDropdown(query);
-      runCommand(query);
+      const raw = e.target.value || '';
+
+      updateDropdown(raw);
+      runCommand(raw);
     });
   }
 
@@ -82,22 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function runCommand(input) {
     if (!input) return;
 
-    const q = safeLower(input);
+    const inputSpace = toSpaceFormat(input);
 
-    const exact = entries.find(e => e.timestamp === input);
+    const exact = entries.find(e =>
+      toSpaceFormat(e.timestamp) === inputSpace
+    );
+
     if (exact) return focusEntry(exact);
 
-    return filterPartial(q);
+    return filterPartial(input);
   }
 
   function filterPartial(query) {
 
-    const q = safeLower(query);
+    const inputSpace = toSpaceFormat(query);
 
-    const matches = entries.filter(e =>
-      safeLower(e.timestamp).includes(q) ||
-      safeLower(e.text).includes(q)
-    );
+    const matches = entries.filter(e => {
+      const entrySpace = toSpaceFormat(e.timestamp);
+
+      return entrySpace.startsWith(inputSpace) ||
+             safeLower(e.text).includes(safeLower(query));
+    });
 
     if (!matches.length) {
       lookupResult.textContent = 'No match';
@@ -174,23 +201,26 @@ document.addEventListener('DOMContentLoaded', () => {
       .forEach(c => c.classList.remove('highlight'));
   }
 
-  // ================= DROPDOWN (SAFE + KEYWORD + PREVIEW) =================
+  // ================= DROPDOWN =================
 
   function updateDropdown(query) {
 
     if (!dropdown) return;
+
     if (!query) {
       dropdown.innerHTML = '';
       return;
     }
 
-    const q = safeLower(query);
+    const inputSpace = toSpaceFormat(query);
 
     const matches = entries
-      .filter(e =>
-        safeLower(e.timestamp).includes(q) ||
-        safeLower(e.text).includes(q)
-      )
+      .filter(e => {
+        const entrySpace = toSpaceFormat(e.timestamp);
+
+        return entrySpace.startsWith(inputSpace) ||
+               safeLower(e.text).includes(safeLower(query));
+      })
       .slice(0, 10);
 
     dropdown.innerHTML = '';
@@ -221,9 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ================= LOAD DATA (FIXED SAFE PARSE) =================
+  // ================= LOAD DATA =================
 
-  fetch('data/timestampedtext_17_3_26.txt')
+  fetch('timestampedtext_17_3_26.txt')
     .then(res => res.text())
     .then(data => {
 
@@ -232,10 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
       entries = lines
         .map(line => {
           const parts = line.split('|');
-
           return {
             timestamp: (parts[0] || '').trim(),
-            text: (parts[1] || '').trim() || ''
+            text: (parts[1] || '').trim()
           };
         })
         .filter(e => e.timestamp);
@@ -252,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-  // ================= RENDER MONTH =================
+  // ================= RENDER =================
 
   function renderMonth(row, month) {
 

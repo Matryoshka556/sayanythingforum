@@ -125,6 +125,7 @@ body {
   justify-content: center; /* horizontal center */
   font-size: 2.5rem; /* responsive heading size */
   font-weight: 500;
+  padding: 7.4rem;
 }
 
 /* Ticker track inside each row */

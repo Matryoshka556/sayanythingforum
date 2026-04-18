@@ -105,6 +105,7 @@ body {
   flex-direction: column;
   height: 100vh; /* full viewport height */
   padding-top: 5rem; /* space for nav */
+  width: 110vw;
 }
 
 /* Flex rows: each takes equal space */

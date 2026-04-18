@@ -140,7 +140,7 @@ body {
   width: 100%;
   border: 1px solid black;
   border-top: none;
-  max-height: 200px;
+  max-height: 12.5rem;
   overflow-y: auto;
   font-size: 0.85rem;
 }

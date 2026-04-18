@@ -280,20 +280,20 @@ textarea {
 }
 p{
 	font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
-	font-size: .75rem;
-	font-weight: 400;
+	font-size: 1rem;
+	font-weight: 300;
 	color: black;
   line-height: 1.4;
 }
 sub{
   font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 300;
   color: black;
 }
 sub2{
   font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: black;
   line-height: 1.4;

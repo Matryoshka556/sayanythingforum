@@ -87,26 +87,35 @@
 
 
 
-   <div id="response">
+<div id="response">
 
   <form id="response-form"
-        action="https://script.google.com/macros/s/AKfycbyfwFlhjYCTnL_eh8h3FYe3Q_MYuSxZQPOMBa3NyBNtipOpcaPzuTPJFyWGeY7OU3RE/exec"
-        method="post">
+        action="https://script.google.com/macros/s/AKfycbw_igsaNg0Q5oEPCR7V9mTpWL_euSRo4ZMxP4nUNpjvGG2_yInpmfMUXYXLgDyyJW6Q/exec"
+        method="post"
+        target="hidden_iframe">
 
     <div id="response-textbox">
       <label><sub>text submission</sub></label><br>
+
       <textarea name="textsubmission"
         oninput="this.style.height='';this.style.height=this.scrollHeight + 'px'"
         maxlength="1400"></textarea>
+
+      <!-- optional bot trap -->
+      <input type="text" name="honeypot" style="display:none">
     </div>
+
     <div>
       <input type="submit" value="Submit">
     </div>
-  </form>
-  <div id="status-message"></div>
-</div>
 
-    
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <div id="status-message"></div>
+
+</div>
     </div>
 <div id="footer">
   > &copy; 2024 Say Anything Forum. All rights reserved.

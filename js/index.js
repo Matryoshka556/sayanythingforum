@@ -44,62 +44,33 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     });
+// ================= FORM SUBMISSION (NO CORS VERSION) =================
 
-  // ================= FORM SUBMISSION (OPTION 1 FIX) =================
+const form = document.getElementById("response-form");
+const status = document.getElementById("status-message");
+const iframe = document.querySelector('iframe[name="hidden_iframe"]');
 
-  const form = document.getElementById("response-form");
-  const status = document.getElementById("status-message");
+if (form && iframe) {
 
-  if (form) {
+  form.addEventListener("submit", () => {
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // 🔴 prevents redirect
+    if (status) {
+      status.textContent = "Submitting...";
+      status.style.color = "black";
+    }
 
-      const formData = new FormData(form);
+  });
 
-      if (status) {
-        status.textContent = "Submitting...";
-        status.style.color = "black";
-      }
+  iframe.onload = () => {
 
-      try {
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: formData
-        });
+    // Fires AFTER submission completes
+    if (status) {
+      status.textContent = "Submission successful ✔";
+      status.style.color = "green";
+    }
 
-        const data = await res.json();
-
-        console.log(data);
-
-        if (data.result === "success") {
-
-          if (status) {
-            status.textContent = "Submission successful ✔";
-            status.style.color = "green";
-          }
-
-          form.reset();
-
-        } else {
-
-          if (status) {
-            status.textContent = "Submission failed ✖";
-            status.style.color = "red";
-          }
-        }
-
-      } catch (err) {
-
-        console.error(err);
-
-        if (status) {
-          status.textContent = "Network error ✖";
-          status.style.color = "red";
-        }
-      }
-
-    });
-  }
+    form.reset();
+  };
+}
 
 });

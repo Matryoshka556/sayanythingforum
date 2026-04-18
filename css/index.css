@@ -241,6 +241,7 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
 }
 input[type="submit"] {
   color: rgb(0, 0, 0);

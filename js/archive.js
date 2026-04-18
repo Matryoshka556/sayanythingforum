@@ -27,14 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return (v || '').toLowerCase();
   }
 
-  // ======================================================
-  // 🔑 SPACE NORMALIZATION SYSTEM (CORE FIX)
-  // ======================================================
+  function hasDigits(str) {
+    return /\d/.test(str);
+  }
+
+  // ================= SPACE NORMALIZER =================
 
   function toSpaceFormat(value) {
     if (!value) return '';
 
     const digits = value.replace(/\D/g, '');
+
+    if (!digits) return '';
 
     const parts = [
       digits.slice(0, 4),
@@ -107,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputSpace = toSpaceFormat(input);
 
     const exact = entries.find(e =>
-      toSpaceFormat(e.timestamp) === inputSpace
+      inputSpace && toSpaceFormat(e.timestamp) === inputSpace
     );
 
     if (exact) return focusEntry(exact);
@@ -118,12 +122,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterPartial(query) {
 
     const inputSpace = toSpaceFormat(query);
+    const lowerQuery = safeLower(query);
+
+    const useDate = hasDigits(query);
 
     const matches = entries.filter(e => {
+
       const entrySpace = toSpaceFormat(e.timestamp);
 
-      return entrySpace.startsWith(inputSpace) ||
-             safeLower(e.text).includes(safeLower(query));
+      if (useDate) {
+        return entrySpace.startsWith(inputSpace);
+      }
+
+      // keyword ONLY mode
+      return safeLower(e.text).includes(lowerQuery);
     });
 
     if (!matches.length) {
@@ -213,13 +225,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const inputSpace = toSpaceFormat(query);
+    const lowerQuery = safeLower(query);
+    const useDate = hasDigits(query);
 
     const matches = entries
       .filter(e => {
+
         const entrySpace = toSpaceFormat(e.timestamp);
 
-        return entrySpace.startsWith(inputSpace) ||
-               safeLower(e.text).includes(safeLower(query));
+        if (useDate) {
+          return entrySpace.startsWith(inputSpace);
+        }
+
+        return safeLower(e.text).includes(lowerQuery);
       })
       .slice(0, 10);
 

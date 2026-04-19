@@ -68,7 +68,6 @@ body {
   transform: translateX(-50%);
   margin-bottom: 2rem;
   width: 90vw;
-  max-width: 1200px;
   background: white opacity(0.9);
   padding: 5px 20px;
   display: flex;
@@ -123,9 +122,7 @@ body {
 .center-row {
   flex: 2; /* make H1 row slightly larger */
   justify-content: center; /* horizontal center */
-  font-size: 2.5rem; /* responsive heading size */
   font-weight: 500;
-  padding-right: 7.4rem;
 }
 
 /* Ticker track inside each row */
@@ -303,7 +300,7 @@ sub2{
 }
 h1{
 font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-font-size: 2.5rem;
+font-size: 4rem;
 font-weight: 400;
 color: black;}	
 h2{

@@ -319,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
       time.className = 'time';
       time.textContent = displayFormat(entry.timestamp);
 
-      const text = document.createElement('div');
-      text.className = 'entry';
-      text.textContent = entry.text;
+   const text = document.createElement('div');
+text.className = 'entry';
+text.innerHTML = (entry.text || '').replace(/\\n/g, '<br>');
 
       item.appendChild(time);
       item.appendChild(text);

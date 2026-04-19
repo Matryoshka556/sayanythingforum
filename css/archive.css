@@ -258,6 +258,19 @@ body {
   max-height: none;
   padding-bottom: 0.1rem;
 }
+#footer{
+  display: flex;
+  height: auto;
+  width: 100%;
+  align-items: center;
+  background: white opacity(0.9); 
+  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: .5rem;
+  font-weight: 300;
+  color: rgb(125, 125, 125);
+  text-align: center;
+  padding: 1rem;
+}
 
 p{
 	font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';

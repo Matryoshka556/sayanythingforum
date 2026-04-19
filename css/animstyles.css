@@ -1,4 +1,3 @@
-/* ARCHIVE */
 @charset "utf-8";
 /* CSS Document */
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -50,262 +49,146 @@ table {
 	border-spacing: 0;
 }
 /*END MEYER REST*/
+
 body {
   margin: 0;
-  background: white;
-  color:black;
-  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  overflow-x: hidden;
-  height: 100vh;
-  line-height: normal;
+  overflow: hidden;
+  background: black;
+  font-family: "Space Grotesk", sans-serif;
 }
-#nav-container {
-  position:absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 2rem;
-  width: 90vw;
-  background: white opacity(0.9);
-  padding: 5px 20px;
+
+#tickerField {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ================================
+   TRACK SYSTEM
+================================= */
+.track {
+  position: absolute;
+  white-space: nowrap;
+  color:rgb(201, 201, 201);
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.track-inner {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: scroll linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+/* ================================
+   MODIFIER PANEL (UPDATED STYLE)
+================================= */
+
+#modifierPanel {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  width: 180px;
+  padding: 12px;
+
+  background: #000;
+  border: 1px solid white;
+
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+.mod-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* layout for controls */
+#modifierPanel label {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000; /* ensure it stays on top */
-}
-#nav {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-#nav-left,
-#nav-right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#nav-container a {
-  margin: 0;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  font-size: 1rem;
-}
-#lookup-header {
-  width: 80%;
-  text-align: left;
-  margin-bottom: 0.8rem;
-
-}
-/* ================= ISO LOOKUP ================= */
-#lookup-container {
-  width: 90%;
-  margin: 6rem auto 1rem auto;
-  border-bottom: 1px solid black;
-  padding-bottom: 1rem;
+  margin: 10px 0;
+  gap: 6px;
 }
 
-#lookup-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-}
+/* ================================
+   CUSTOM COLOR PICKER
+================================= */
 
-#iso-lookup {
-  width: 100%;
-  font-family: inherit;
-  font-size: 1rem;
-  border: 1px solid black;
-  padding: 0.5rem;
-  outline: none;
-}
+#bgPicker {
+  appearance: none;
+  -webkit-appearance: none;
 
-#lookup-result {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-}
-.timestamp.highlight {
-  border: 1px solid black;
-  outline: 1px solid black;
-}
+  width: 28px;
+  height: 28px;
 
-#lookup-dropdown {
-  width: 100%;
-  border: 1px solid black;
-  border-top: none;
-  max-height: 12.5rem;
-  overflow-y: auto;
-  font-size: 0.85rem;
-}
+  border: 1px solid white;
+  background: var(--picker-color, #000);
 
-.dropdown-item {
-  padding: 0.4rem;
+  opacity: 0.6;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
+
+  transition: opacity 0.2s ease;
 }
 
-.dropdown-item:hover {
-  background: black;
-  color: white;
+#bgPicker:hover {
+  opacity: 0.85;
 }
 
-/* ================= BASE (your existing reset stays above) ================= */
-
-#archive {
-  width: 90%;
-  margin-top: 5rem;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-/* ================= ARCHIVE HEADER ================= */
-#archive-header {
-  width: 100%;
-  margin-bottom: 2rem;
-  text-align: left;
-}
-.archive-year {
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  border-bottom: 1px solid black;
-  padding-bottom: 0.5rem;
-}
-/* ================= MONTH GRID ROW ================= */
-
-.month-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid black;
+#bgPicker:active,
+#bgPicker:focus {
+  opacity: 1;
 }
 
-.month {
-  padding: 0.5rem;
-  cursor: pointer;
+/* remove native styling */
+#bgPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
 
-.month-label {
-  border-bottom: 1px solid black;
-  padding-bottom: 0.25rem;
+#bgPicker::-webkit-color-swatch {
+  border: none;
 }
 
-/* ================= EXPANDING CONTENT ================= */
-
-.row-content {
-  grid-column: span 3;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.0625s linear;
-}
-
-.month-row.active .row-content {
-  max-height: none;
-}
-
-/* ================= 6 COLUMN TIMESTAMP GRID ================= */
-
-.timestamp-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+/* sliders */
+#modifierPanel input[type="range"] {
   width: 100%;
 }
-
-/* base timestamp cell */
-.timestamp {
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  padding: 0.5rem;
-  cursor: pointer;
-  min-width: 0;
-}
-
-/* timestamp time label */
-.time {
-  font-size: 0.8rem;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* hidden entry */
-.entry {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.125s linear;
-  font-size: 0.9rem;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* ================= EXPANDED STATE ================= */
-
-.timestamp.active {
-  grid-column: span 2;
-  border: 1px solid black;
-}
-
-.timestamp.active .entry {
-  max-height: none;
-  padding-bottom: 0.1rem;
-}
-#footer{
-  display: flex;
-  height: auto;
-  width: 100%;
-  align-items: center;
-  background: white opacity(0.9); 
-  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  font-size: .5rem;
-  font-weight: 300;
-  color: rgb(125, 125, 125);
-  text-align: center;
-  padding: 1rem;
-}
-
-p{
-	font-family: "Space Grotesk",'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
-	font-size: 1rem;
-	font-weight: 300;
-	color: black;
-  line-height: 1.4;
-}
-sub{
-  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  font-size: 2rem;
-  font-weight: 300;
-  color: black;
-}
-sub2{
-  font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: black;
-  line-height: 1.4;
-}
-h1{
-font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-font-size: 2.5rem;
-font-weight: 400;
-color: black;}	
-h2{
-font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
-font-size: 2rem;
-font-weight: 350;
-color: black;}	
-
-space grotesk{
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.75rem;
-  font-weight: 400;
-	font-style: normal;}
+#return{
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  width: auto;
+  padding: 12px;
   
+  background: #000;
+  border: 1px solid white;
+
+}
+
+sub3{
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: .5rem;
+}
+
+
+
+#p
+{
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+a:visited {
+    color: white;
+}

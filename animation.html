@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Animator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="animstyles.css">
+</head>
+
+<body>
+
+<div id="tickerField"></div>
+
+<!-- MODIFIER PANEL -->
+<div id="modifierPanel">
+  <div class="mod-title"><sub2>Modifiers</sub2></div>
+
+  <label>
+    <p>Background</p>
+    <input type="color" id="bgPicker" value="#000000">
+  </label>
+
+<label>
+  <p>Density</p>
+  <input type="number" id="densityInput" value="50" min="1" max="500">
+</label>
+
+  <label>
+    <p>Color Randomizer</p>
+    <input type="checkbox" id="driftToggle">
+  </label>
+</div>
+
+<script src="animscript.js"></script>
+
+</body>
+</html>

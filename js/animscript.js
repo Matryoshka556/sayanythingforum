@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================================
      LOAD TEXT
   ================================= */
-  fetch("anim.txt")
+  fetch("data/anim.txt")
     .then(res => res.text())
     .then(text => {
 

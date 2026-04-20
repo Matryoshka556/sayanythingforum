@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lookupResult = document.getElementById('lookup-result');
   const dropdown = document.getElementById('lookup-dropdown');
 
-  // ================= HELPERS =================
+
 
   function displayFormat(timestamp) {
     return (timestamp || '').replace('T', '-');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return /\d/.test(str);
   }
 
-  // ================= SPACE NORMALIZER =================
+
 
   function toSpaceFormat(value) {
     if (!value) return '';
@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return parts.join(' ');
   }
 
-  // ================= PLACEHOLDER =================
-
   if (lookupInput) {
     lookupInput.placeholder = 'YYYY MM DD HH mm ss';
 
@@ -70,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ================= CLICK SYSTEM =================
 
   document.addEventListener('click', (e) => {
 
@@ -91,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ================= INPUT =================
+
 
   if (lookupInput) {
     lookupInput.addEventListener('input', (e) => {
@@ -103,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ================= COMMAND ENGINE =================
+
 
   function runCommand(input) {
     if (!input) return;
@@ -134,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return entrySpace.startsWith(inputSpace);
       }
 
-      // keyword ONLY mode
+
       return safeLower(e.text).includes(lowerQuery);
     });
 
@@ -148,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightMatches(matches);
   }
 
-  // ================= FOCUS =================
 
   function focusEntry(entry) {
     if (!entry) return;
@@ -194,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 0);
   }
 
-  // ================= HIGHLIGHT =================
+
 
   function highlightMatches(matches) {
     clearHighlights();
@@ -213,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .forEach(c => c.classList.remove('highlight'));
   }
 
-  // ================= DROPDOWN =================
 
   function updateDropdown(query) {
 
@@ -269,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ================= LOAD DATA =================
 
   fetch('data/timestampedtext_17_3_26.txt')
     .then(res => res.text())
@@ -299,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-  // ================= RENDER =================
 
   function renderMonth(row, month) {
 

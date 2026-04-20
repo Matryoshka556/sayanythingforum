@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ================= TICKER SYSTEM =================
 
   fetch("data/atext_4_17.txt")
     .then(response => response.text())
@@ -19,20 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const row = document.getElementById(rowId);
         if (!row) return;
 
-        // Shuffle lines
+
         const shuffled = [...lines].sort(() => Math.random() - 0.5);
         const content = shuffled.join(' • ');
 
-        // Create ticker track
         const track = document.createElement('div');
         track.className = 'ticker-track';
         track.innerHTML = content + ' • ' + content;
 
-        // Random duration per row
+
         const duration = 1500 + Math.random() * 10;
         track.style.animationDuration = duration + 's';
 
-        // Random direction
+
         const direction = Math.random() < 0.5 ? 'normal' : 'reverse';
         track.style.animationName =
           direction === 'normal' ? 'scrollText' : 'scrollTextReverse';
@@ -44,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     });
-// ================= FORM SUBMISSION (NO CORS VERSION) =================
+
 
 const form = document.getElementById("response-form");
 const status = document.getElementById("status-message");
@@ -63,7 +61,7 @@ if (form && iframe) {
 
   iframe.onload = () => {
 
-    // Fires AFTER submission completes
+
     if (status) {
       status.textContent = "Submission successful ✔";
       status.style.color = "green";

@@ -64,9 +64,7 @@ body {
   overflow: hidden;
 }
 
-/* ================================
-   TRACK SYSTEM
-================================= */
+
 .track {
   position: absolute;
   white-space: nowrap;
@@ -86,10 +84,6 @@ body {
   from { transform: translateX(0%); }
   to { transform: translateX(-100%); }
 }
-
-/* ================================
-   MODIFIER PANEL (UPDATED STYLE)
-================================= */
 
 #modifierPanel {
   position: fixed;
@@ -112,17 +106,13 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* layout for controls */
+
 #modifierPanel label {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
   gap: 6px;
 }
-
-/* ================================
-   CUSTOM COLOR PICKER
-================================= */
 
 #bgPicker {
   appearance: none;
@@ -149,7 +139,6 @@ body {
   opacity: 1;
 }
 
-/* remove native styling */
 #bgPicker::-webkit-color-swatch-wrapper {
   padding: 0;
 }

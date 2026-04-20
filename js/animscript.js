@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const maxAllowed = Math.min(GLOBAL_LINES.length, MAX_CAP);
 
-      const defaultDensity = Math.max(Math.floor(GLOBAL_LINES.length / 4), 50);
+      const defaultDensity = Math.max(Math.floor(GLOBAL_LINES.length / 5), 50);
 
       SETTINGS.density = Math.min(defaultDensity, maxAllowed);
 

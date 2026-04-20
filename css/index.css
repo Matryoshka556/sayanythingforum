@@ -49,10 +49,7 @@ table {
 	border-spacing: 0;
 }
 /*END MEYER REST*/
-html {
-  font-size: 1rem; /* base size */
-  display: flex;
-}
+
 body {
   margin: 0;
   background: white;
@@ -60,6 +57,7 @@ body {
   font-family: "Space Grotesk", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
   overflow-x: hidden;
   height: 100vh;
+font-size: 1rem;
 }
 #nav-container {
   position:absolute;
@@ -144,57 +142,64 @@ body {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(0); }
 }
-#main{
-	width: 90vw;
-	height: auto;
-	max-width: inherit;
-	display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-	padding: .5rem;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 10px;
-}
+#main {
+  width: 90vw;
+  max-width: inherit;
+  margin: 0 auto 10px auto;
+  padding: 0.5rem;
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0;
+}
 
 #instructions {
-    width: auto;
-    height: max-content;
-    max-width: inherit;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
 }
 
-#topbox{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    padding-bottom: .5rem;
-}
- #topbox-text{
-  padding: .5rem;
- }
+#topbox {
+  display: grid;
+  grid-template-columns: 1fr;
 
-#middleboxes{
-    display: flex;
-    flex-direction: row;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+
+  padding-bottom: 0.5rem;
 }
-#middleboxes div{
-  padding: .5rem;
+
+#topbox-text {
+  padding: 0.5rem;
+}
+
+#middleboxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#middleboxes > div {
+  padding: 0.5rem;
+
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
-  
 }
 
+#middleboxes > div:last-child {
+  border-right: 1px solid black;
+}
 
+#agreement {
+  display: grid;
+}
 
+#agreement > div {
+  padding: 0.5rem;
+  border: 1px solid black;
+}
 
 #box4{
   border: 1px solid black;

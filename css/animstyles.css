@@ -1,9 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -25,7 +20,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -48,8 +42,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/*END MEYER REST*/
-
+/*END MEYER RESET */
 body {
   margin: 0;
   overflow: hidden;
@@ -63,7 +56,6 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-
 
 .track {
   position: absolute;
@@ -84,6 +76,9 @@ body {
   from { transform: translateX(0%); }
   to { transform: translateX(-100%); }
 }
+
+
+
 
 #modifierPanel {
   position: fixed;
@@ -106,13 +101,13 @@ body {
   letter-spacing: 0.5px;
 }
 
-
 #modifierPanel label {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
   gap: 6px;
 }
+
 
 #bgPicker {
   appearance: none;
@@ -147,10 +142,42 @@ body {
   border: none;
 }
 
-/* sliders */
 #modifierPanel input[type="range"] {
   width: 100%;
 }
+#textPicker {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid white;
+  background: var(--text-picker-color, #c9c9c9);
+
+  opacity: 0.6;
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+#textPicker:hover {
+  opacity: 0.85;
+}
+
+#textPicker:active,
+#textPicker:focus {
+  opacity: 1;
+}
+
+#textPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#textPicker::-webkit-color-swatch {
+  border: none;
+}
+
 #return{
   position: fixed;
   left: 12px;

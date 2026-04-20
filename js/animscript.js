@@ -5,7 +5,7 @@ let SETTINGS = {
 };
 
 let GLOBAL_LINES = [];
-const MAX_CAP = 300; )
+const MAX_CAP = 300;
 
 document.addEventListener("DOMContentLoaded", () => {
 

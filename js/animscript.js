@@ -5,7 +5,7 @@ let SETTINGS = {
 };
 
 let GLOBAL_LINES = [];
-const MAX_CAP = 300; // performance ceiling (adjustable)
+const MAX_CAP = 300; )
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -24,9 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bgPicker.style.setProperty("--picker-color", SETTINGS.bg);
   });
 
-  /* ================================
-     DENSITY (NUMBER INPUT)
-  ================================= */
   densityInput.addEventListener("input", (e) => {
 
     const maxAllowed = Math.min(GLOBAL_LINES.length, MAX_CAP);
@@ -38,20 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
     regenerate(field);
   });
 
-  /* ================================
-     DRIFT TOGGLE (NOW ALSO RE-RENDERS)
-  ================================= */
+
   driftToggle.addEventListener("change", (e) => {
 
     SETTINGS.driftEnabled = e.target.checked;
 
-    // required: refresh behavior
+    
     regenerate(field);
   });
 
-  /* ================================
-     LOAD TEXT
-  ================================= */
+ 
   fetch("data/anim.txt")
     .then(res => res.text())
     .then(text => {
@@ -60,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const maxAllowed = Math.min(GLOBAL_LINES.length, MAX_CAP);
 
-      // default = 1/4 of file OR fallback 50
+   
       const defaultDensity = Math.max(Math.floor(GLOBAL_LINES.length / 4), 50);
 
       SETTINGS.density = Math.min(defaultDensity, maxAllowed);
@@ -72,9 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/* ================================
-   REGENERATE FIELD (RANDOM SAMPLE)
-================================= */
 function regenerate(field) {
 
   field.innerHTML = "";
@@ -95,9 +85,6 @@ function regenerate(field) {
   }
 }
 
-/* ================================
-   TRACK CREATION
-================================= */
 function createTrack(field, text) {
 
   const track = document.createElement("div");
@@ -127,9 +114,6 @@ function createTrack(field, text) {
   track.appendChild(inner);
   field.appendChild(track);
 
-  /* ================================
-     POSITIONING
-  ================================= */
   const bounds = field.getBoundingClientRect();
 
   const x = Math.random() * bounds.width;
@@ -146,16 +130,10 @@ function createTrack(field, text) {
   track.style.height = `${thickness}px`;
   track.style.width = `${420 + Math.random() * 300}px`;
 
-  /* ================================
-     INFINITE SCROLL
-  ================================= */
   const speed = 12 + Math.random() * 25;
   inner.style.animationDuration = `${speed}s`;
   inner.style.animationIterationCount = "infinite";
 
-  /* ================================
-     CHROMATIC DRIFT (OPTIONAL)
-  ================================= */
   function animateColors(time) {
 
     if (!SETTINGS.driftEnabled) return;

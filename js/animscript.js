@@ -1,32 +1,37 @@
 let SETTINGS = {
   density: 200,
   driftEnabled: false,
-  bg: "#000000"
+  bg: "#000000",
+  textColor: "#c9c9c9"
 };
 
 let GLOBAL_LINES = [];
-const MAX_CAP = 300; // performance ceiling (adjustable)
+const MAX_CAP = 300;
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const field = document.getElementById("tickerField");
 
   const bgPicker = document.getElementById("bgPicker");
+  const textPicker = document.getElementById("textPicker");
   const densityInput = document.getElementById("densityInput");
   const driftToggle = document.getElementById("driftToggle");
 
-  /* ================================
-     BACKGROUND
-  ================================= */
   bgPicker.addEventListener("input", (e) => {
     SETTINGS.bg = e.target.value;
     document.body.style.background = SETTINGS.bg;
     bgPicker.style.setProperty("--picker-color", SETTINGS.bg);
   });
 
-  /* ================================
-     DENSITY (NUMBER INPUT)
-  ================================= */
+  textPicker.addEventListener("input", (e) => {
+    SETTINGS.textColor = e.target.value;
+    textPicker.style.setProperty("--text-picker-color", SETTINGS.textColor);
+
+    document.querySelectorAll(".track span").forEach(el => {
+      el.style.color = SETTINGS.textColor;
+    });
+  });
+
   densityInput.addEventListener("input", (e) => {
 
     const maxAllowed = Math.min(GLOBAL_LINES.length, MAX_CAP);
@@ -38,20 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     regenerate(field);
   });
 
-  /* ================================
-     DRIFT TOGGLE (NOW ALSO RE-RENDERS)
-  ================================= */
   driftToggle.addEventListener("change", (e) => {
-
     SETTINGS.driftEnabled = e.target.checked;
-
-    // required: refresh behavior
     regenerate(field);
   });
 
-  /* ================================
-     LOAD TEXT
-  ================================= */
   fetch("data/anim.txt")
     .then(res => res.text())
     .then(text => {
@@ -60,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const maxAllowed = Math.min(GLOBAL_LINES.length, MAX_CAP);
 
-      // default = 1/4 of file OR fallback 50
       const defaultDensity = Math.max(Math.floor(GLOBAL_LINES.length / 4), 50);
 
       SETTINGS.density = Math.min(defaultDensity, maxAllowed);
@@ -72,9 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/* ================================
-   REGENERATE FIELD (RANDOM SAMPLE)
-================================= */
 function regenerate(field) {
 
   field.innerHTML = "";
@@ -95,9 +87,6 @@ function regenerate(field) {
   }
 }
 
-/* ================================
-   TRACK CREATION
-================================= */
 function createTrack(field, text) {
 
   const track = document.createElement("div");
@@ -113,6 +102,7 @@ function createTrack(field, text) {
     span.textContent = char;
     span.dataset.hue = Math.random() * 360;
     span.dataset.speed = 0.5 + Math.random() * 2;
+    span.style.color = SETTINGS.textColor;
     chars.push(span);
     return span;
   }
@@ -127,9 +117,6 @@ function createTrack(field, text) {
   track.appendChild(inner);
   field.appendChild(track);
 
-  /* ================================
-     POSITIONING
-  ================================= */
   const bounds = field.getBoundingClientRect();
 
   const x = Math.random() * bounds.width;
@@ -146,16 +133,10 @@ function createTrack(field, text) {
   track.style.height = `${thickness}px`;
   track.style.width = `${420 + Math.random() * 300}px`;
 
-  /* ================================
-     INFINITE SCROLL
-  ================================= */
   const speed = 12 + Math.random() * 25;
   inner.style.animationDuration = `${speed}s`;
   inner.style.animationIterationCount = "infinite";
 
-  /* ================================
-     CHROMATIC DRIFT (OPTIONAL)
-  ================================= */
   function animateColors(time) {
 
     if (!SETTINGS.driftEnabled) return;

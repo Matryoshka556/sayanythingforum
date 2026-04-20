@@ -103,7 +103,7 @@ body {
   margin-bottom: 0.8rem;
 
 }
-/* ================= ISO LOOKUP ================= */
+
 #lookup-container {
   width: 90%;
   margin: 6rem auto 1rem auto;
@@ -155,15 +155,13 @@ body {
   color: white;
 }
 
-/* ================= BASE (your existing reset stays above) ================= */
-
 #archive {
   width: 90%;
   margin-top: 5rem;
   margin-left: 5%;
   margin-right: 5%;
 }
-/* ================= ARCHIVE HEADER ================= */
+
 #archive-header {
   width: 100%;
   margin-bottom: 2rem;
@@ -196,8 +194,6 @@ body {
   padding-bottom: 0.25rem;
 }
 
-/* ================= EXPANDING CONTENT ================= */
-
 .row-content {
   grid-column: span 3;
   max-height: 0;
@@ -209,7 +205,7 @@ body {
   max-height: none;
 }
 
-/* ================= 6 COLUMN TIMESTAMP GRID ================= */
+
 
 .timestamp-grid {
   display: grid;
@@ -218,7 +214,6 @@ body {
   width: 100%;
 }
 
-/* base timestamp cell */
 .timestamp {
   border-right: 1px solid black;
   border-top: 1px solid black;
@@ -229,14 +224,13 @@ body {
   min-width: 0;
 }
 
-/* timestamp time label */
+
 .time {
   font-size: 0.8rem;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* hidden entry */
 .entry {
   max-height: 0;
   overflow: hidden;
@@ -246,7 +240,6 @@ body {
   word-break: break-word;
 }
 
-/* ================= EXPANDED STATE ================= */
 
 .timestamp.active {
   grid-column: span 2;

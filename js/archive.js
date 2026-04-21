@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  fetch('data/tstampmain.txt')
+  fetch('data/tstampmain214.txt')
     .then(res => res.text())
     .then(data => {
 
